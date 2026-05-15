@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaksyarn | Premium Industrial Yarn Solutions</title>
+    
+    <!-- CSS Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        :root { --vaks-orange: #f37021; --vaks-black: #0a0a0a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fff; overflow-x: hidden; }
+        
+        .header-font { font-family: 'Syncopate', sans-serif; }
+        
+        /* Nav */
+        nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-bottom: 1px solid #eeeeee; height: 90px; }
+        .nav-link { color: #1a1a1a; font-weight: 800; font-size: 11px; letter-spacing: 2px; transition: 0.3s; }
+        .nav-link:hover { color: var(--vaks-orange); }
+
+        /* Hero */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-bg.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; align-items: center; position: relative;
+        }
+
+        /* Swiper Fixes */
+        .swiper { width: 100%; height: 500px; box-shadow: 30px 30px 0px var(--vaks-orange); }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .swiper-button-next, .swiper-button-prev { color: white !important; }
+
+        /* Cert Cards */
+        .cert-card { background: #fffaf7; border: 1px solid #f1f1f1; padding: 40px; border-radius: 20px; transition: 0.4s; text-align: center; }
+        .cert-card:hover { transform: translateY(-10px); border-color: var(--vaks-orange); }
+
+        /* Global Vision Section (En Alttaki Boşluk Sorunu Çözüldü) */
+        .global-vision {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('global-bg.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; items-center: center; justify-content: center; text-align: center; color: white;
+        }
+
+        .btn-vaks { padding: 20px 50px; background: var(--vaks-orange); color: white; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; transition: 0.4s; display: inline-block; }
+        .btn-vaks:hover { background: #000; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-[100] flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="#home"><img src="logo.png" alt="Vaksyarn" class="h-16 w-auto"></a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link uppercase">Home</a>
+                <a href="#about" class="nav-link uppercase">Corporate</a>
+                <a href="#certificates" class="nav-link uppercase">Certificates</a>
+                <a href="#products" class="nav-link uppercase">Products</a>
+                <a href="#contact" class="nav-link uppercase">Contact</a>
+            </div>
+            <a href="tel:+903764161600" class="hidden lg:block text-[10px] font-bold bg-black text-white px-6 py-3 rounded-full hover:bg-[#f37021] transition">+90 376 416 16 00</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero-section">
+        <div class="max-w-7xl mx-auto px-6 w-full text-white" data-aos="fade-up">
+            <h1 class="text-7xl md:text-9xl font-extrabold leading-none header-font mb-10">MASTERING<br><span class="text-transparent" style="-webkit-text-stroke: 1.5px #f37021;">THE TWIST.</span></h1>
+            <p class="max-w-xl mb-12 border-l-4 border-[#f37021] pl-6 text-xl font-light">Global textile partner since 2007. Delivering high-capacity yarn twisting solutions.</p>
+            <a href="#products" class="btn-vaks text-sm">Our Collections</a>
+        </div>
+    </section>
+
+    <!-- About & Slider -->
+    <section id="about" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-5xl font-extrabold mb-8 uppercase tracking-tighter">Production<br>Excellence</h2>
+                    <p class="text-gray-600 text-lg mb-10 leading-relaxed text-justify">Founded in Istanbul and expanded to Ilgaz, Vaksyarn combines 17 years of experience with state-of-the-art production facilities.</p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="border-t-2 border-gray-100 pt-6"><span class="block text-4xl font-black">2007</span><span class="text-gray-400 text-xs font-bold uppercase tracking-widest">Founded</span></div>
+                        <div class="border-t-2 border-gray-100 pt-6"><span class="block text-4xl font-black text-[#f37021]">2</span><span class="text-gray-400 text-xs font-bold uppercase tracking-widest">Plants</span></div>
+                    </div>
+                </div>
+                <!-- FIXED SLIDER -->
+                <div class="swiper mySwiper" data-aos="zoom-in">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="factory1.jpg"></div>
+                        <div class="swiper-slide"><img src="factory2.jpg"></div>
+                        <div class="swiper-slide"><img src="factory3.jpg"></div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-5xl font-extrabold mb-20 uppercase header-font" data-aos="fade-up">Global Standards</h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-leaf text-4xl text-[#f37021] mb-6"></i><h3 class="text-2xl font-bold mb-4">GOTS</h3><p class="text-gray-500 text-sm">Certified organic production across the entire supply chain.</p></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-shield-alt text-4xl text-[#f37021] mb-6"></i><h3 class="text-2xl font-bold mb-4">ISO 9001</h3><p class="text-gray-500 text-sm">International quality management system standards.</p></div>
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-check-circle text-4xl text-[#f37021] mb-6"></i><h3 class="text-2xl font-bold mb-4">OEKO-TEX</h3><p class="text-gray-500 text-sm">Tested for harmful substances for product safety.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="bg-black py-0">
+        <div class="grid lg:grid-cols-3">
+            <div class="relative h-[600px] overflow-hidden group">
+                <img src="organic.jpg" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute bottom-10 left-10"><h3 class="text-3xl font-bold text-white uppercase">Vaks Organic</h3></div>
+            </div>
+            <div class="relative h-[600px] overflow-hidden group border-x border-gray-900">
+                <img src="recycled.jpg" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute bottom-10 left-10"><h3 class="text-3xl font-bold text-white uppercase">Vaks Recycled</h3></div>
+            </div>
+            <div class="relative h-[600px] overflow-hidden group">
+                <img src="fancy.jpg" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700">
+                <div class="absolute bottom-10 left-10"><h3 class="text-3xl font-bold text-white uppercase">Vaks Fancy</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Vision (YENİ ALAN) -->
+    <section class="global-vision flex flex-col items-center justify-center">
+        <div data-aos="zoom-out">
+            <h2 class="text-4xl md:text-6xl font-black uppercase mb-4">Global Reach</h2>
+            <p class="text-orange-500 font-bold tracking-widest uppercase">Exporting to 30+ Countries</p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl font-extrabold mb-8 uppercase">Get in<br><span class="text-[#f37021]">Touch.</span></h2>
+                <p class="text-gray-500 mb-10">Inquire about our premium twisted yarns for global brand needs.</p>
+                <div class="space-y-6 font-bold">
+                    <p><i class="fas fa-envelope text-[#f37021] mr-4"></i> info@vaksyarn.com</p>
+                    <p><i class="fas fa-map-marker-alt text-[#f37021] mr-4"></i> Ilgaz OSB, Çankırı / TR</p>
+                </div>
+            </div>
+            <div class="bg-white p-12 shadow-2xl border-t-8 border-[#f37021]" data-aos="fade-up">
+                <form class="space-y-6">
+                    <input type="text" placeholder="Full Name" class="w-full p-5 bg-gray-50 outline-none focus:ring-1 focus:ring-[#f37021]">
+                    <textarea placeholder="Message" rows="4" class="w-full p-5 bg-gray-50 outline-none focus:ring-1 focus:ring-[#f37021]"></textarea>
+                    <button type="submit" class="btn-vaks w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer class="bg-[#050505] py-20 text-center">
+        <!-- İşaretlediğin yer burasıdır. Klasöre 'footer-image.png' adında bir görsel atarsan burada görünecektir -->
+        <img src="footer-image.png" class="h-24 mx-auto mb-10 opacity-80 hover:opacity-100 transition object-contain">
+        <p class="text-gray-600 text-xs tracking-widest uppercase">© 2024 Vaksyarn Textile Industry. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        // AOS
+        AOS.init({ duration: 1000, once: true });
+
+        // SWIPER FIX
+        document.addEventListener('DOMContentLoaded', function() {
+            var swiper = new Swiper(".mySwiper", {
+                loop: true,
+                autoplay: { delay: 3000, disableOnInteraction: false },
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+                pagination: { el: ".swiper-pagination", clickable: true },
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
