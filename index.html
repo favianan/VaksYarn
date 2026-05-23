@@ -57,8 +57,8 @@
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(0,0,0,0.03); transition: var(--transition-fast);
         }
-        nav { height: 95px; display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; list-style: none; gap: 50px; }
+        nav { height: 95px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .nav-links { display: flex; list-style: none; gap: 0; flex: 1; justify-content: space-evenly; padding: 0 60px; }
         .nav-links a {
             text-decoration: none; color: var(--brand-charcoal); font-weight: 700; font-size: 0.8rem;
             letter-spacing: 1.5px; text-transform: uppercase; position: relative; transition: var(--transition-fast);
@@ -104,7 +104,6 @@
         .corp-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; align-items: center; }
         .section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; line-height: 1.1; }
         
-        /* FIXED: Sayılar Siyah Yapıldı */
         .stat-item h3 { 
             font-size: 4.5rem; 
             font-weight: 900; 
@@ -113,7 +112,6 @@
         }
         .stat-item p { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-size: 0.85rem; }
         
-        /* GÖRSEL ALANI: corp-factory.jpg dosyasını kullanır */
         .corp-img { 
             width: 100%; 
             height: 500px; 
@@ -125,7 +123,7 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            filter: brightness(1.05) contrast(1.05); /* Daha net görünmesi için filtre */
+            filter: brightness(1.05) contrast(1.05);
             transition: var(--transition-premium); 
         }
         .corp-img:hover img { transform: scale(1.05); }
@@ -164,11 +162,93 @@
         .category-label { color: var(--brand-white); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 8px; }
 
         /* --- CONTACT --- */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 120px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 24px 0; border: none; border-bottom: 2px solid var(--border-color); background: transparent; font-family: inherit; font-size: 1.1rem; outline: none; transition: var(--transition-fast); }
-        .form-group input:focus { border-bottom-color: var(--brand-orange); }
-        .form-group input::placeholder { color: #BBB; transition: opacity 0.3s ease; }
-        .form-group input:focus::placeholder { opacity: 0; }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* Sol: Siyah info kartı */
+        .contact-info-card {
+            background: var(--brand-charcoal);
+            border-radius: 4px;
+            padding: 60px 50px;
+            color: var(--brand-white);
+        }
+        .contact-info-card h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            line-height: 1.1;
+        }
+        .contact-info-item {
+            margin-bottom: 35px;
+        }
+        .contact-info-item .info-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .contact-info-item .info-value {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--brand-orange);
+            letter-spacing: 0.5px;
+        }
+
+        /* Sağ: Form alanı */
+        .contact-form-side h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 50px;
+            letter-spacing: -0.02em;
+        }
+        .contact-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 40px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 20px 0;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            background: transparent;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-main);
+            outline: none;
+            transition: var(--transition-fast);
+            resize: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--brand-orange);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #BBB;
+            transition: opacity 0.3s ease;
+        }
+        .form-group input:focus::placeholder,
+        .form-group textarea:focus::placeholder {
+            opacity: 0;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
 
         /* --- FOOTER --- */
         footer { background: var(--brand-charcoal); padding: 120px 0 60px; text-align: center; color: #444; }
@@ -177,8 +257,8 @@
         .footer-social a:hover { color: var(--brand-orange); }
         .copyright { font-size: 0.8rem; border-top: 1px solid #222; padding-top: 50px; margin-top: 50px; text-transform: uppercase; letter-spacing: 1px; }
 
-        @media (max-width: 1100px) { .corp-grid, .contact-grid { grid-template-columns: 1fr; gap: 80px; } .prod-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 768px) { .nav-links { display: none; } .hero-content h1 { font-size: 3.8rem; } .prod-grid { grid-template-columns: 1fr; } .corp-img { height: 400px; } }
+        @media (max-width: 1100px) { .corp-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; } .prod-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero-content h1 { font-size: 3.8rem; } .prod-grid { grid-template-columns: 1fr; } .corp-img { height: 400px; } .contact-form-grid { grid-template-columns: 1fr; } .form-group.full-width { grid-column: span 1; } }
     </style>
 </head>
 <body>
@@ -188,7 +268,6 @@
         <div class="container">
             <nav>
                 <div class="logo-wrap">
-                    <!-- LOGO dosyasını burada çağırıyoruz -->
                     <img src="logo.png" alt="Vaks Yarn" style="height: 48px; width: auto;">
                 </div>
                 <ul class="nav-links">
@@ -198,7 +277,7 @@
                     <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div style="width: 48px;"></div>
+                <div style="width: 48px; flex-shrink: 0;"></div>
             </nav>
         </div>
     </header>
@@ -208,8 +287,8 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>VAKS <span class="accent">YARN</span></h1>
-            <p>Cinematic Precision in Industrial Twisting</p>
-            <a href="#products" class="btn-premium">Explore Collections</a>
+            <p>Quality Yarn Production Since 2007</p>
+            <a href="#products" class="btn-premium">View Products</a>
         </div>
     </section>
 
@@ -218,17 +297,15 @@
         <div class="container">
             <div class="corp-grid">
                 <div>
-                    <h2 class="section-title">Production <span class="accent">Excellence</span></h2>
+                    <h2 class="section-title">Our <span class="accent">Production</span></h2>
                     <div class="stat-group" style="display: flex; gap: 60px; margin-bottom: 40px;">
                         <div class="stat-item"><h3>2007</h3><p>Founded</p></div>
-                        <div class="stat-item"><h3>02</h3><p>Global Plants</p></div>
+                        <div class="stat-item"><h3>02</h3><p>Factories</p></div>
                     </div>
-                    <p style="margin-bottom: 40px; font-size: 1.25rem; color: var(--text-muted);">With over 17 years of industrial mastery, Vaks Yarn delivers massive production volume with pinpoint accuracy for global manufacturers.</p>
-                    <a href="#contact" class="btn-premium">Get In Touch</a>
+                    <p style="margin-bottom: 40px; font-size: 1.25rem; color: var(--text-muted);">With 17 years of experience, Vaks Yarn produces high-quality yarn at scale for manufacturers around the world.</p>
+                    <a href="#contact" class="btn-premium">Contact Us</a>
                 </div>
                 <div class="corp-img">
-                    <!-- FOTOĞRAF BURADA ÇAĞIRILIYOR -->
-                    <!-- Klasöründeki dosya adı 'corp-factory' olduğu için .jpg ekledik -->
                     <img src="corp-factory.jpg" alt="Vaks Factory Showcase">
                 </div>
             </div>
@@ -239,7 +316,7 @@
     <section id="certificates" class="section-padding cert-section reveal">
         <div class="container">
             <div class="cert-header">
-                <h2 class="section-title">Global <span class="accent">Standards</span></h2>
+                <h2 class="section-title">Our <span class="accent">Certificates</span></h2>
                 <div class="cert-nav">
                     <div class="arrow" id="prevBtn">&#10094;</div>
                     <div class="arrow" id="nextBtn">&#10095;</div>
@@ -247,7 +324,6 @@
             </div>
             <div class="cert-viewport">
                 <div class="cert-track" id="certTrack">
-                    <!-- Klasöründeki isimlere göre uzantıları .png olarak ayarladım -->
                     <div class="cert-card"><img src="cert-gots.png" alt="GOTS"><h4>GOTS</h4><p>Global Organic Standard</p></div>
                     <div class="cert-card"><img src="cert-grs.png" alt="GRS"><h4>GRS</h4><p>Global Recycled Standard</p></div>
                     <div class="cert-card"><img src="cert-rcs-blended.png" alt="RCS"><h4>RCS Blended</h4><p>Recycled Claim Standard</p></div>
@@ -263,19 +339,19 @@
     <!-- Products Grid -->
     <section id="products" class="section-padding reveal">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 80px;" class="section-title">Vaks <span class="accent">Collections</span></h2>
+            <h2 style="text-align: center; margin-bottom: 80px;" class="section-title">Our <span class="accent">Products</span></h2>
             <div class="prod-grid">
                 <div class="prod-card">
                     <div class="prod-img" style="background-image: url('prod-organic.jpg');"></div>
-                    <div class="prod-overlay"><span class="category-label">Luxury</span><h4>Vaks <span class="accent">Organic</span></h4></div>
+                    <div class="prod-overlay"><span class="category-label">Natural</span><h4>Vaks <span class="accent">Organic</span></h4></div>
                 </div>
                 <div class="prod-card">
                     <div class="prod-img" style="background-image: url('prod-recycled.jpg');"></div>
-                    <div class="prod-overlay"><span class="category-label">Sustainable</span><h4>Vaks <span class="accent">Recycled</span></h4></div>
+                    <div class="prod-overlay"><span class="category-label">Eco Friendly</span><h4>Vaks <span class="accent">Recycled</span></h4></div>
                 </div>
                 <div class="prod-card">
                     <div class="prod-img" style="background-image: url('prod-fancy.jpg');"></div>
-                    <div class="prod-overlay"><span class="category-label">Bespoke Selection</span><h4>Vaks <span class="accent">Fancy</span></h4></div>
+                    <div class="prod-overlay"><span class="category-label">Special Range</span><h4>Vaks <span class="accent">Fancy</span></h4></div>
                 </div>
             </div>
         </div>
@@ -285,17 +361,43 @@
     <section id="contact" class="section-padding reveal">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-details">
-                    <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
-                    <p style="margin-top: 30px; font-size: 1.3rem;">info@vaksyarn.com</p>
-                    <p style="font-size: 1.3rem;">Ilgaz OSB, Çankırı / TR</p>
+
+                <!-- Sol: Siyah Bilgi Kartı -->
+                <div class="contact-info-card">
+                    <h3>GET IN <span class="accent">TOUCH</span></h3>
+                    <div class="contact-info-item">
+                        <div class="info-label">Email</div>
+                        <div class="info-value">info@vaksyarn.com</div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="info-label">Address</div>
+                        <div class="info-value">Ilgaz OSB, Çankırı / TR</div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="info-label">Phone</div>
+                        <div class="info-value">+90 376 465 12 34</div>
+                    </div>
                 </div>
-                <form class="contact-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                    <div class="form-group"><input type="text" placeholder="Yusuf Cebeci" required></div>
-                    <div class="form-group"><input type="email" placeholder="1yusufcebeci@gmail.com" required></div>
-                    <div class="form-group" style="grid-column: span 2;"><textarea rows="4" placeholder="How can we help your business?"></textarea></div>
-                    <div style="grid-column: span 2;"><button type="submit" class="btn-premium" style="width: 100%;">Initiate Inquiry</button></div>
-                </form>
+
+                <!-- Sağ: Form Alanı -->
+                <div class="contact-form-side">
+                    <h2>GET A <span class="accent">QUOTE</span></h2>
+                    <div class="contact-form-grid">
+                        <div class="form-group">
+                            <input type="text" placeholder="Yusuf Cebeci" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="example@gmail.com" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-premium" style="width: 100%; font-size: 0.85rem; padding: 22px;">SEND MESSAGE</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -304,7 +406,7 @@
         <div class="container">
             <div class="footer-logo"><img src="logo.png" alt="Vaks"></div>
             <div class="footer-social"><a href="https://instagram.com/vaksyarn" target="_blank">INSTAGRAM</a></div>
-            <p class="copyright">&copy; 2024 VAKS YARN PRODUCTION. ALL RIGHTS RESERVED. MASTERING THE TWIST SINCE 2007.</p>
+            <p class="copyright">&copy; 2024 VAKS YARN. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
