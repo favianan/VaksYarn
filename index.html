@@ -92,7 +92,7 @@
         .btn-premium {
             display: inline-block; padding: 22px 55px; background: var(--brand-orange); color: var(--brand-white);
             text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;
-            border-radius: 4px; transition: var(--transition-fast); border: none; cursor: pointer;
+            border-radius: 4px; transition: var(--transition-fast); border: none; cursor: pointer; text-align: center;
         }
         .btn-premium:hover { 
             transform: scale(1.05) translateY(-3px); 
@@ -100,7 +100,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
         }
 
-        /* --- CORPORATE SECTION --- */
+        /* --- CORPORATE SECTION & SLIDER --- */
         .corp-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 100px; align-items: center; }
         .section-title { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 40px; text-transform: uppercase; line-height: 1.1; }
         
@@ -112,21 +112,26 @@
         }
         .stat-item p { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-size: 0.85rem; }
         
-        .corp-img { 
-            width: 100%; 
-            height: 500px; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.06); 
+        /* New Corp Slider Styles */
+        .corp-slider-container {
+            width: 100%;
+            height: 550px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.06);
         }
-        .corp-img img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            filter: brightness(1.05) contrast(1.05);
-            transition: var(--transition-premium); 
+        .corp-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            object-fit: cover;
         }
-        .corp-img:hover img { transform: scale(1.05); }
+        .corp-slide.active {
+            opacity: 1;
+        }
 
         /* --- CERTIFICATES --- */
         .cert-section { background-color: var(--light-gray); overflow: hidden; }
@@ -162,102 +167,21 @@
         .category-label { color: var(--brand-white); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 8px; }
 
         /* --- CONTACT --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.8fr;
-            gap: 80px;
-            align-items: start;
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.8fr; gap: 80px; align-items: start; }
+        .contact-info-card { background: var(--brand-charcoal); border-radius: 4px; padding: 60px 50px; color: var(--brand-white); }
+        .contact-info-card h3 { font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 50px; line-height: 1.1; }
+        .contact-info-item { margin-bottom: 35px; }
+        .contact-info-item .info-label { font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+        .contact-info-item .info-value { font-size: 1.15rem; font-weight: 800; color: var(--brand-orange); letter-spacing: 0.5px; display: block; }
+        .info-link { text-decoration: none; transition: var(--transition-fast); }
+        .info-link:hover { color: var(--brand-white) !important; transform: translateX(5px); }
 
-        /* Sol: Siyah info kartı */
-        .contact-info-card {
-            background: var(--brand-charcoal);
-            border-radius: 4px;
-            padding: 60px 50px;
-            color: var(--brand-white);
-        }
-        .contact-info-card h3 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 50px;
-            line-height: 1.1;
-        }
-        .contact-info-item {
-            margin-bottom: 35px;
-        }
-        .contact-info-item .info-label {
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 8px;
-        }
-        .contact-info-item .info-value {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--brand-orange);
-            letter-spacing: 0.5px;
-        }
-        .info-link {
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition-fast);
-        }
-        .info-link:hover {
-            color: var(--brand-white) !important;
-            text-decoration: underline;
-        }
-
-        /* Sağ: Form alanı */
-        .contact-form-side h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 50px;
-            letter-spacing: -0.02em;
-        }
-        .contact-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 40px;
-        }
-        .form-group {
-            margin-bottom: 10px;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 20px 0;
-            border: none;
-            border-bottom: 2px solid var(--border-color);
-            background: transparent;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-main);
-            outline: none;
-            transition: var(--transition-fast);
-            resize: none;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-bottom-color: var(--brand-orange);
-        }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #BBB;
-            transition: opacity 0.3s ease;
-        }
-        .form-group input:focus::placeholder,
-        .form-group textarea:focus::placeholder {
-            opacity: 0;
-        }
-        .form-group.full-width {
-            grid-column: span 2;
-        }
+        .contact-form-side h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; text-transform: uppercase; line-height: 1.1; margin-bottom: 50px; letter-spacing: -0.02em; }
+        .contact-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 20px 0; border: none; border-bottom: 2px solid var(--border-color); background: transparent; font-family: inherit; font-size: 1rem; color: var(--text-main); outline: none; transition: var(--transition-fast); resize: none; }
+        .form-group input:focus, .form-group textarea:focus { border-bottom-color: var(--brand-orange); }
+        .form-group.full-width { grid-column: span 2; }
 
         /* --- FOOTER --- */
         footer { background: var(--brand-charcoal); padding: 120px 0 60px; text-align: center; color: #444; }
@@ -281,65 +205,25 @@
         .mobile-menu.open { display: flex; }
         .mobile-menu ul { list-style: none; text-align: center; }
         .mobile-menu ul li { margin: 24px 0; }
-        .mobile-menu ul li a {
-            text-decoration: none; color: var(--brand-charcoal); font-size: 1.6rem;
-            font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
-            transition: var(--transition-fast);
-        }
-        .mobile-menu ul li a:hover { color: var(--brand-orange); }
+        .mobile-menu ul li a { text-decoration: none; color: var(--brand-charcoal); font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- TABLET --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 1100px) {
             .corp-grid, .contact-grid { grid-template-columns: 1fr; gap: 60px; }
             .prod-grid { grid-template-columns: 1fr 1fr; }
+            .corp-slider-container { height: 450px; }
         }
 
-        /* --- MOBILE --- */
         @media (max-width: 768px) {
-            /* Nav */
             .nav-links { display: none; }
             .hamburger { display: flex; }
             nav { height: 70px; }
-
-            /* Section padding */
             .section-padding { padding: 70px 0; }
-
-            /* Hero */
-            .hero-content h1 { font-size: clamp(2.6rem, 13vw, 3.8rem); letter-spacing: -0.03em; }
-            .hero-content p { font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 35px; }
-            .btn-premium { padding: 16px 36px; font-size: 0.8rem; }
-
-            /* Corporate */
-            .corp-grid { grid-template-columns: 1fr; gap: 40px; }
-            .corp-img { height: 280px; }
-            .stat-group { gap: 30px !important; flex-wrap: wrap; }
-            .stat-item h3 { font-size: 3rem; }
-
-            /* Certificates */
-            .cert-header { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
-            .cert-card { padding: 40px 28px; }
-
-            /* Products */
-            .prod-grid { grid-template-columns: 1fr; gap: 20px; }
-            .prod-img { height: 320px; }
-            .prod-overlay { padding: 28px; }
-            .prod-overlay h4 { font-size: 1.6rem; }
-
-            /* Contact */
-            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-            .contact-info-card { padding: 40px 28px; }
-            .contact-form-grid { grid-template-columns: 1fr; gap: 0; }
+            .hero-content h1 { font-size: clamp(2.6rem, 13vw, 3.8rem); }
+            .corp-slider-container { height: 320px; }
+            .prod-grid { grid-template-columns: 1fr; }
+            .contact-form-grid { grid-template-columns: 1fr; }
             .form-group.full-width { grid-column: span 1; }
-
-            /* Footer */
-            footer { padding: 70px 0 40px; }
-            .footer-logo img { height: 44px; }
-        }
-
-        @media (max-width: 420px) {
-            .hero-content h1 { font-size: 2.4rem; }
-            .section-title { font-size: 2rem; }
-            .stat-item h3 { font-size: 2.4rem; }
         }
     </style>
 </head>
@@ -363,7 +247,6 @@
                     <span></span><span></span><span></span>
                 </div>
             </nav>
-            <!-- Mobile Menu -->
             <div class="mobile-menu" id="mobileMenu">
                 <ul>
                     <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
@@ -399,8 +282,11 @@
                     <p style="margin-bottom: 40px; font-size: 1.25rem; color: var(--text-muted);">With 17 years of experience, Vaks Yarn produces high-quality yarn at scale for manufacturers around the world.</p>
                     <a href="#contact" class="btn-premium">Contact Us</a>
                 </div>
-                <div class="corp-img">
-                    <img src="corp-factory.jpg" alt="Vaks Factory Showcase">
+                <!-- Corporate Slider -->
+                <div class="corp-slider-container">
+                    <img src="corp-factory-1.jpg" alt="Vaks Factory 1" class="corp-slide active">
+                    <img src="corp-factory-2.jpg" alt="Vaks Factory 2" class="corp-slide">
+                    <img src="corp-factory-3.jpg" alt="Vaks Factory 3" class="corp-slide">
                 </div>
             </div>
         </div>
@@ -455,8 +341,6 @@
     <section id="contact" class="section-padding reveal">
         <div class="container">
             <div class="contact-grid">
-
-                <!-- Sol: Siyah Bilgi Kartı -->
                 <div class="contact-info-card">
                     <h3>GET IN <span class="accent">TOUCH</span></h3>
                     <div class="contact-info-item">
@@ -469,29 +353,28 @@
                     </div>
                     <div class="contact-info-item">
                         <div class="info-label">Phone</div>
-                        <a href="tel:+903764651234" class="info-value info-link">+90 376 465 12 34</a>
+                        <a href="tel:+903764161600" class="info-value info-link">+90 376 416 16 00</a>
+                        <a href="tel:+903764161605" class="info-value info-link">+90 376 416 16 05</a>
                     </div>
                 </div>
 
-                <!-- Sağ: Form Alanı -->
                 <div class="contact-form-side">
                     <h2>GET A <span class="accent">QUOTE</span></h2>
-                    <div class="contact-form-grid">
+                    <form class="contact-form-grid">
                         <div class="form-group">
-                            <input type="text" placeholder="Yusuf Cebeci" required>
+                            <input type="text" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="example@gmail.com" required>
+                            <input type="email" placeholder="Email Address" required>
                         </div>
                         <div class="form-group full-width">
-                            <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+                            <textarea rows="5" placeholder="Tell us about your project or requirements..."></textarea>
                         </div>
                         <div class="form-group full-width">
                             <button type="submit" class="btn-premium" style="width: 100%; font-size: 0.85rem; padding: 22px;">SEND MESSAGE</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-
             </div>
         </div>
     </section>
@@ -505,6 +388,19 @@
     </footer>
 
     <script>
+        // --- CORPORATE SLIDER ENGINE ---
+        const initCorpSlider = () => {
+            const slides = document.querySelectorAll('.corp-slide');
+            let currentSlide = 0;
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 4000);
+        };
+        initCorpSlider();
+
         // --- SCROLL-SPY ---
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -527,7 +423,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-        // --- SLIDER ENGINE ---
+        // --- CERTIFICATE SLIDER ENGINE ---
         const track = document.getElementById('certTrack');
         const dotsCont = document.getElementById('certDots');
         const nextBtn = document.getElementById('nextBtn');
@@ -555,6 +451,7 @@
         }
 
         function slide() {
+            if(!cards[0]) return;
             const gap = 30; const cardW = cards[0].getBoundingClientRect().width;
             track.style.transform = `translate3d(-${idx * (cardW + gap)}px, 0, 0)`;
             const dots = document.querySelectorAll('.dot');
@@ -565,66 +462,11 @@
         function resetTimer() { clearInterval(timer); timer = setInterval(next, 3500); }
         nextBtn.onclick = () => { next(); resetTimer(); };
         prevBtn.onclick = () => { idx = (idx <= 0) ? (cards.length - visible) : idx - 1; slide(); resetTimer(); };
-        window.onresize = () => { updateSlider(); };
+        window.addEventListener('resize', updateSlider);
 
         updateSlider(); resetTimer();
 
-        // --- TOUCH SWIPE FOR SLIDER ---
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let isDragging = false;
-        let dragStartX = 0;
-        let dragOffset = 0;
-
-        function getBaseTranslate() {
-            const gap = 30;
-            const cardW = cards[0].getBoundingClientRect().width;
-            return -(idx * (cardW + gap));
-        }
-
-        track.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-            isDragging = true;
-            dragStartX = touchStartX;
-            dragOffset = 0;
-            track.style.transition = 'none';
-            clearInterval(timer);
-        }, { passive: true });
-
-        track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const dx = e.touches[0].clientX - touchStartX;
-            const dy = e.touches[0].clientY - touchStartY;
-            if (Math.abs(dy) > Math.abs(dx)) { isDragging = false; return; }
-            dragOffset = dx;
-            track.style.transform = `translate3d(${getBaseTranslate() + dragOffset}px, 0, 0)`;
-        }, { passive: true });
-
-        track.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            track.style.transition = 'transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
-            const threshold = 60;
-            if (dragOffset < -threshold) {
-                next();
-            } else if (dragOffset > threshold) {
-                const max = cards.length - visible;
-                idx = (idx <= 0) ? max : idx - 1;
-                slide();
-            } else {
-                slide();
-            }
-            resetTimer();
-        });
-
-        window.onscroll = () => {
-            scrollSpy();
-            const h = document.getElementById('header');
-            h.style.padding = window.scrollY > 50 ? '0' : '10px 0';
-            h.style.boxShadow = window.scrollY > 50 ? '0 10px 40px rgba(0,0,0,0.05)' : 'none';
-        };
-        // --- HAMBURGER MENU ---
+        // --- MOBILE NAV ---
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
         hamburger.addEventListener('click', () => {
@@ -638,6 +480,17 @@
             document.body.style.overflow = '';
         }
 
+        // Header style change on scroll
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('header');
+            if(window.scrollY > 50) {
+                h.style.padding = '0';
+                h.style.boxShadow = '0 10px 40px rgba(0,0,0,0.05)';
+            } else {
+                h.style.padding = '10px 0';
+                h.style.boxShadow = 'none';
+            }
+        });
     </script>
 </body>
 </html>
